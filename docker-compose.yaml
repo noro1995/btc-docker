@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  core:
+    image: ruimarinho/bitcoin-core:0.17
+    command:
+      -regtest=1
+      -rest
+      -rpcallowip=::/0
+      -rpcuser=core
+      -rpcpassword=1234
+      -rpcport=18443
+      -server
+    ports:
+      - 18443:18443
+
+  ongrid:
+    image: ruimarinho/bitcoin-core:0.17
+    command:
+      -regtest=1
+      -rest
+      -rpcallowip=::/0
+      -rpcuser=ongrid
+      -rpcpassword=1234
+      -wallet=ongrid
+      -rpcport=18443
+      -server
+    ports:
+      - 18453:18443
+
+  definme:
+    image: ruimarinho/bitcoin-core:0.17
+    command:
+      -regtest=1
+      -rest
+      -rpcallowip=::/0
+      -rpcuser=definme
+      -rpcpassword=1234
+      -wallet=definme
+      -rpcport=18443
+      -server
+    ports:
+      - 18463:18443
+
+
